@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void sendMessage() {
-    ChatMessage message = ChatMessage(sender: "user", text: controller.text);
+    ChatMessage message = ChatMessage(sender: "User", text: controller.text);
     setState(() {
       messageList.insert(0, message);
     });
@@ -58,7 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade200,
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: const Text(
             "Chat-GPT",
             style: TextStyle(fontWeight: FontWeight.bold),

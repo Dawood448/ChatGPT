@@ -7,9 +7,16 @@ class ChatMessage extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(child: Text(sender[0]),),
-      title:Text(sender,style: const TextStyle(color: Colors.green),),
-      subtitle: Text(text),
+      leading: Container(
+        height: 40,
+        width: 70,
+          decoration: BoxDecoration(
+            color: sender=="User"?Colors.yellow.shade500:Colors.red.shade400,
+            borderRadius: BorderRadius.circular(30)
+          ),
+          child:Center(child: Text(sender),),
+      ),
+      subtitle: Text(text,style: const TextStyle(color: Colors.black),),
     );
   }
 }
