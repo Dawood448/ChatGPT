@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:gpt/CustomWidgets/field_widget.dart';
+import '../CustomWidgets/three_dots.dart';
 import 'chat_messages.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,7 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
   List<ChatMessage> messageList = [];
   ChatGPT? chatGPT;
   StreamSubscription? subscription;
-  String token = "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";
+  String token = "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";
+  String copy="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";
+  bool isTyping=false;
   @override
   void initState() {
     super.initState();
@@ -33,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ChatMessage message = ChatMessage(sender: "User", text: controller.text);
     setState(() {
       messageList.insert(0, message);
+      isTyping=true;
     });
     controller.clear();
     final request = CompleteReq(
@@ -46,9 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
         )
         .onCompleteStream(request: request)
         .listen((event) {
-          print( event!.choices[0].text);
-          ChatMessage botMessage=ChatMessage(sender: "Bot", text: event.choices[0].text);
+          ChatMessage botMessage=ChatMessage(sender: "Bot", text: event!.choices[0].text);
           setState(() {
+            isTyping=false;
             messageList.insert(0, botMessage);
           });
     });
@@ -58,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.grey.shade200,
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           backgroundColor: Colors.white,
           title: const Text(
@@ -89,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     return messageList[index];
                   }),
             ),
+            //if(isTyping) const ThreeDots(),
             kField(
               text: "Ask me anything!",
               controller: controller,

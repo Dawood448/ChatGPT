@@ -11,7 +11,7 @@ class ChatMessage extends StatelessWidget
         height: 40,
         width: 70,
           decoration: BoxDecoration(
-            color: sender=="User"?Colors.yellow.shade500:Colors.red.shade400,
+            color: sender=="User"?Colors.greenAccent:Colors.red.shade400,
             borderRadius: BorderRadius.circular(30)
           ),
           child:Center(child: Text(sender),),
