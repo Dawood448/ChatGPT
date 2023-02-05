@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<ChatMessage> messageList = [];
   ChatGPT? chatGPT;
   StreamSubscription? subscription;
-  String token = "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";
+  String token = "sk-rHiLxiW0tdXrEIt8QC59T3BlbkFJeRcQlzMYlo3HBk219B";
   bool isTyping=false;
   @override
   void initState() {
