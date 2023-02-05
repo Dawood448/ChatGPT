@@ -17,8 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<ChatMessage> messageList = [];
   ChatGPT? chatGPT;
   StreamSubscription? subscription;
-  String token = "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";
-  String copy="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";
+  String token = "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";
   bool isTyping=false;
   @override
   void initState() {
@@ -93,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     return messageList[index];
                   }),
             ),
-            //if(isTyping) const ThreeDots(),
+            if(isTyping) const ThreeDots(),
             kField(
               text: "Ask me anything!",
               controller: controller,
